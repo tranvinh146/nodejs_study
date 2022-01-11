@@ -28,7 +28,7 @@ app.engine(
 );
 
 app.set('view engine',
-  'hbs');
+  "hbs");
 
 app.set(
   'views',
