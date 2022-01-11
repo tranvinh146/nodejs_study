@@ -23,17 +23,13 @@ app.use(express.json());
 app.engine(
   'hbs',
   handlebars.engine({
-    extname: '.hbs'
+    extname: '.hbs',
   }),
 );
 
-app.set('view engine',
-  "hbs");
+app.set('view engine', 'hbs');
 
-app.set(
-  'views',
-  path.join(__dirname, 'resources/views')
-);
+app.set('views', path.join(__dirname, 'resources/views'));
 
 // Routes init
 route(app);
