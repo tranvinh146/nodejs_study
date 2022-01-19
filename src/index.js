@@ -6,6 +6,8 @@ const morgan = require('morgan');
 const app = express();
 const port = 3000;
 
+const SortMiddleware = require('./app/middlewares/sortMiddleware');
+
 const route = require('./routes');
 const db = require('./config/db/index');
 
@@ -23,6 +25,9 @@ app.use(express.json());
 
 app.use(methodOverride('_method'));
 
+// Custom middlewares
+app.use(SortMiddleware);
+
 // HTTP logger
 // app.use(morgan('combined'))
 
@@ -31,9 +36,7 @@ app.engine(
   'hbs',
   handlebars.engine({
     extname: '.hbs',
-    helpers: {
-      sum: (a, b) => a + b,
-    },
+    helpers: require('./helpers/handlebars'),
   }),
 );
 
